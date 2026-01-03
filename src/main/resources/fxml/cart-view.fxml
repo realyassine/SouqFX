@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    CART VIEW - FXML
+    ================
+    This FXML file defines the Shopping Cart screen.
+    
+    Shows cart items, total price, and checkout options.
+-->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CartController"
+            prefWidth="600" prefHeight="500">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- TOP: Title -->
+    <top>
+        <Label text="🛒 Shopping Cart" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+            <BorderPane.margin>
+                <Insets bottom="10"/>
+            </BorderPane.margin>
+        </Label>
+    </top>
+
+    <!-- CENTER: Cart Items and Total -->
+    <center>
+        <VBox spacing="10">
+            <!-- Cart Items List -->
+            <ListView fx:id="cartListView" prefHeight="280" VBox.vgrow="ALWAYS"/>
+
+            <!-- Total Price -->
+            <HBox alignment="CENTER_RIGHT">
+                <Label fx:id="totalLabel" text="Total: 0.00 DH"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Action Buttons -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+
+            <Button text="← Back to Products" onAction="#handleBackToProducts"/>
+            <Button text="Clear Cart" onAction="#handleClearCart"/>
+            <Button text="✓ Checkout"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white;"
+                    onAction="#handleCheckout"/>
+        </HBox>
+    </bottom>
+</BorderPane>

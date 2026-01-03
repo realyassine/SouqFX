@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    ORDER VIEW - FXML
+    =================
+    This FXML file defines the Order Processing/Confirmation screen.
+    
+    Shows order status, progress bar, and order details.
+    
+    CONCEPT: PLATFORM.RUNLATER
+    The controller uses Platform.runLater() to update UI from background threads.
+-->
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.OrderController"
+      spacing="20" alignment="CENTER"
+      prefWidth="600" prefHeight="500">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="📦 Order Processing" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Status Label -->
+    <Label fx:id="orderStatusLabel" text="Processing your order..." style="-fx-font-size: 16px;"/>
+
+    <!-- Progress Bar -->
+    <ProgressBar fx:id="progressBar" progress="0" prefWidth="300"/>
+
+    <!-- Order Details TextArea -->
+    <TextArea fx:id="orderDetailsArea" editable="false" prefRowCount="10" prefWidth="500" VBox.vgrow="ALWAYS"/>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="🛒 New Order" onAction="#handleNewOrder"/>
+        <Button text="Exit" onAction="#handleExit"/>
+    </HBox>
+</VBox>

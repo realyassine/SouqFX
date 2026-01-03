@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    PRODUCT VIEW - FXML
+    ==================
+    This FXML file defines the Product Catalog screen.
+    
+    CONCEPT: FXML separates UI design from application logic.
+    - UI structure is defined declaratively in XML
+    - Controller handles the logic and events
+    - fx:id links FXML elements to controller fields
+    - onAction links events to controller methods
+-->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ProductController"
+            prefWidth="600" prefHeight="500">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- TOP: Title and Search Section -->
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+
+            <!-- Title -->
+            <Label text="🛒 Product Catalog" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <!-- Search and Filter Row -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="Search products..." prefWidth="200"/>
+                <Button text="🔍 Search" onAction="#handleSearch"/>
+                
+                <Label text="Filter:"/>
+                <ComboBox fx:id="filterComboBox" prefWidth="120"/>
+                
+                <Button text="Reset" onAction="#handleReset"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- CENTER: Product List -->
+    <center>
+        <VBox spacing="10">
+            <ListView fx:id="productListView" prefHeight="300" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Cart Section -->
+    <bottom>
+        <HBox spacing="20" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+            <Label fx:id="cartCountLabel" text="Cart: 0 items" style="-fx-font-size: 14px;"/>
+            <Button text="🛒 View Cart" style="-fx-font-size: 14px;" onAction="#handleViewCart"/>
+        </HBox>
+    </bottom>
+</BorderPane>
